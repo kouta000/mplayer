@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+h1{
+    color: aqua;
+}
+
+body{
+    text-align: center;
+    background: #000022;
+}
+
+.appflame{
+    background: #ffffff;
+    width: 420px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+}
