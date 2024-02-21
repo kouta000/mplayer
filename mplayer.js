@@ -18,6 +18,18 @@ for(var i=0; i<listitems.length; i++){
     );
 }
 
+function playMusic(li){
+    var file = li.getAttribute('data-file');
+            var audio = document.querySelector('audio');
+            audio.setAttribute('src', file);
+            audio.play();
+            //activeな項目を変更
+            var activeil = document.querySelector('.active');
+
+            activeil.className = '';
+            li.className = 'active';
+}
+
 //再生中と停止中でイラストを切り替える
 var audio = document.querySelector('audio');
 audio.addEventListener('play',
@@ -30,5 +42,19 @@ audio.addEventListener('pause',
     (e)=>{
         var img = document.querySelector('img');
         img.setAttribute('src', 'pict_stop.png');
+    }
+);
+
+//曲を最後まで再生したとき
+audio.addEventListener('ended',
+    (e)=>{
+        var img = document.querySelector('img');
+        img.setAttribute('src', 'pict_stop.png');
+        //次の曲に切り替え
+        var activeli = document.querySelector('.active');
+        var nextli = activeli.nextElementSibling;
+        if(nextli != null){
+            playMusic(nextli);
+        }
     }
 )
